@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -9,22 +9,24 @@ async function getData(id) {
   });
 
   if (!res.ok) {
-    return notFound();
+    return notFound()
   }
 
   return res.json();
 }
 
-export async function generateMetadata({params}) {
+
+export async function generateMetadata({ params }) {
+
   const post = await getData(params.id)
   return {
-    title:post.title,
-    description:post.desc,
+    title: post.title,
+    description: post.desc,
   };
 }
+
 const BlogPost = async ({ params }) => {
   const data = await getData(params.id);
-
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -55,7 +57,7 @@ const BlogPost = async ({ params }) => {
       </div>
       <div className={styles.content}>
         <p className={styles.text}>
-        {data.content}
+         {data.content}
         </p>
       </div>
     </div>
